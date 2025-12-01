@@ -4,41 +4,6 @@
 
 Bonjour ! Ce projet est une API REST que j'ai développée avec Django REST Framework pour gérer des concessionnaires et leurs véhicules. C'est un devoir que j'ai réalisé pour mon cours.
 
-## Installation
-
-Pour installer et lancer le projet, voici les étapes :
-
-1. D'abord, cloner le dépôt (ou télécharger les fichiers)
-
-2. Créer un environnement virtuel Python :
-```bash
-python3 -m venv venv
-source venv/bin/activate  # Sur Windows: venv\Scripts\activate
-```
-
-3. Installer les dépendances nécessaires :
-```bash
-pip install -r requirements.txt
-```
-
-4. Faire les migrations pour créer la base de données :
-```bash
-python manage.py migrate
-```
-
-5. (Optionnel) Créer un superutilisateur pour accéder à l'admin Django :
-```bash
-python manage.py createsuperuser
-```
-
-6. Lancer le serveur de développement :
-```bash
-python manage.py runserver
-```
-
-Une fois lancé, l'API sera accessible sur `http://127.0.0.1:8000/api/`
-
-## Endpoints disponibles
 
 ### Endpoints obligatoires
 
@@ -87,13 +52,7 @@ Pour tester l'API, j'ai utilisé Postman mais vous pouvez aussi utiliser Bruno o
 - Django REST Framework 3.14.0
 - djangorestframework-simplejwt 5.3.0 (pour l'authentification JWT)
 
-## Dépôt GitHub
 
-Le projet est disponible sur GitHub : [https://github.com/Mat-eoDev/django-rest](https://github.com/Mat-eoDev/django-rest)
 
-Pour cloner le projet :
-```bash
-git clone https://github.com/Mat-eoDev/django-rest.git
-```
 
 
