@@ -2,28 +2,31 @@
 
 ## Description
 
-Ce projet est une API REST développée avec Django REST Framework pour gérer des concessionnaires et leurs véhicules.
+Bonjour ! Ce projet est une API REST que j'ai développée avec Django REST Framework pour gérer des concessionnaires et leurs véhicules. C'est un devoir que j'ai réalisé pour mon cours.
 
 ## Installation
 
-1. Cloner le dépôt
-2. Créer un environnement virtuel :
+Pour installer et lancer le projet, voici les étapes :
+
+1. D'abord, cloner le dépôt (ou télécharger les fichiers)
+
+2. Créer un environnement virtuel Python :
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # Sur Windows: venv\Scripts\activate
 ```
 
-3. Installer les dépendances :
+3. Installer les dépendances nécessaires :
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Effectuer les migrations :
+4. Faire les migrations pour créer la base de données :
 ```bash
 python manage.py migrate
 ```
 
-5. Créer un superutilisateur (optionnel) :
+5. (Optionnel) Créer un superutilisateur pour accéder à l'admin Django :
 ```bash
 python manage.py createsuperuser
 ```
@@ -33,56 +36,62 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-L'API sera accessible sur `http://127.0.0.1:8000/api/`
+Une fois lancé, l'API sera accessible sur `http://127.0.0.1:8000/api/`
 
 ## Endpoints disponibles
 
 ### Endpoints obligatoires
 
-- `GET /api/concessionnaires/` - Liste tous les concessionnaires
-- `GET /api/concessionnaires/<id>/` - Détails d'un concessionnaire
-- `GET /api/concessionnaires/<id>/vehicules/` - Liste des véhicules d'un concessionnaire
+J'ai implémenté les 4 endpoints demandés :
+
+- `GET /api/concessionnaires/` - Récupère la liste de tous les concessionnaires
+- `GET /api/concessionnaires/<id>/` - Récupère les détails d'un concessionnaire spécifique
+- `GET /api/concessionnaires/<id>/vehicules/` - Liste tous les véhicules d'un concessionnaire
 - `GET /api/concessionnaires/<id>/vehicules/<id>/` - Détails d'un véhicule spécifique
 
 ### Endpoints bonus (Authentification JWT)
 
-- `POST /api/users/` - Créer un utilisateur
-  - Body: `{"username": "user", "password": "pass", "email": "email@example.com"}`
+J'ai aussi fait les endpoints bonus pour l'authentification avec JWT :
+
+- `POST /api/users/` - Permet de créer un nouvel utilisateur
+  - Body à envoyer : `{"username": "user", "password": "pass", "email": "email@example.com"}`
   
-- `POST /api/token/` - Obtenir un token JWT
-  - Body: `{"username": "user", "password": "pass"}`
+- `POST /api/token/` - Permet d'obtenir un token JWT pour s'authentifier
+  - Body à envoyer : `{"username": "user", "password": "pass"}`
   
-- `POST /api/refresh_token/` - Rafraîchir un token JWT
-  - Body: `{"refresh": "refresh_token"}`
+- `POST /api/refresh_token/` - Permet de rafraîchir un token JWT expiré
+  - Body à envoyer : `{"refresh": "refresh_token"}`
 
 ## Modèles de données
 
+J'ai créé deux modèles principaux :
+
 ### Concessionnaire
-- `nom` (CharField, max 64 caractères)
-- `siret` (CharField, 14 caractères exactement) - **Non exposé par l'API**
+- `nom` : Le nom du concessionnaire (max 64 caractères)
+- `siret` : Le numéro SIRET (exactement 14 caractères) - **Ce champ n'est pas exposé par l'API** (il est présent en base de données mais pas dans les réponses JSON)
 
 ### Véhicule
-- `type` (Choix: "moto" ou "auto")
-- `marque` (CharField, max 64 caractères)
-- `chevaux` (IntegerField)
-- `prix_ht` (FloatField)
-- `concessionnaire` (ForeignKey vers Concessionnaire)
+- `type` : Soit "moto" soit "auto"
+- `marque` : La marque du véhicule (max 64 caractères)
+- `chevaux` : Le nombre de chevaux (entier)
+- `prix_ht` : Le prix hors taxes (nombre décimal)
+- `concessionnaire` : Une clé étrangère vers le concessionnaire propriétaire
 
 ## Tests
 
-Vous pouvez tester les endpoints avec des outils comme Postman ou Bruno.
+Pour tester l'API, j'ai utilisé Postman mais vous pouvez aussi utiliser Bruno ou n'importe quel autre outil de test d'API REST. Tous les endpoints sont en GET donc c'est assez simple à tester.
 
 ## Technologies utilisées
 
 - Django 4.2.7
 - Django REST Framework 3.14.0
-- djangorestframework-simplejwt 5.3.0
+- djangorestframework-simplejwt 5.3.0 (pour l'authentification JWT)
 
 ## Dépôt GitHub
 
-Pour créer le dépôt GitHub :
+Le projet est disponible sur GitHub. Pour le cloner ou le mettre à jour :
 
-1. Créer un nouveau dépôt sur GitHub (public)
+1. Créer un nouveau dépôt sur GitHub (en public)
 2. Ajouter le remote :
 ```bash
 git remote add origin https://github.com/VOTRE_USERNAME/VOTRE_REPO.git
@@ -93,5 +102,5 @@ git branch -M main
 git push -u origin main
 ```
 
-Le lien du dépôt doit être fourni dans le rendu du devoir.
+Le lien du dépôt GitHub est à fournir dans le rendu du devoir.
 
