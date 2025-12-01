@@ -1,0 +1,119 @@
+/Users/mateoh/django-rest-framework/venv/lib/python3.14/site-packages/rest_framework_simplejwt/__init__.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+
+============================================================
+🧪 TESTS DE L'API DJANGO REST FRAMEWORK
+============================================================
+
+📝 Création des données de test...
+✅ Données de test créées
+
+============================================================
+TEST: Liste des concessionnaires
+============================================================
+✅ GET http://127.0.0.1:8000/api/concessionnaires/
+   Status: 200 (attendu: 200)
+   Réponse: [
+  {
+    "id": 1,
+    "nom": "Auto Plus Paris"
+  },
+  {
+    "id": 2,
+    "nom": "Moto Center Lyon"
+  }
+]
+
+============================================================
+TEST: Détails d'un concessionnaire
+============================================================
+✅ GET http://127.0.0.1:8000/api/concessionnaires/1/
+   Status: 200 (attendu: 200)
+   Réponse: {
+  "id": 1,
+  "nom": "Auto Plus Paris"
+}
+
+============================================================
+TEST: Liste des véhicules d'un concessionnaire
+============================================================
+✅ GET http://127.0.0.1:8000/api/concessionnaires/1/vehicules/
+   Status: 200 (attendu: 200)
+   Réponse: [
+  {
+    "id": 1,
+    "type": "auto",
+    "marque": "Peugeot",
+    "chevaux": 120,
+    "prix_ht": 25000.0,
+    "concessionnaire": 1
+  },
+  {
+    "id": 3,
+    "type": "auto",
+    "marque": "Renault",
+    "chevaux": 90,
+    "prix_ht": 18000.0,
+    "concessionnaire": 1
+  }
+]
+
+============================================================
+TEST: Détails d'un véhicule spécifique
+============================================================
+✅ GET http://127.0.0.1:8000/api/concessionnaires/1/vehicules/1/
+   Status: 200 (attendu: 200)
+   Réponse: {
+  "id": 1,
+  "type": "auto",
+  "marque": "Peugeot",
+  "chevaux": 120,
+  "prix_ht": 25000.0,
+  "concessionnaire": {
+    "id": 1,
+    "nom": "Auto Plus Paris"
+  }
+}
+
+============================================================
+TEST: Création d'un utilisateur (bonus)
+============================================================
+✅ POST http://127.0.0.1:8000/api/users/
+   Status: 201 (attendu: 201)
+   Réponse: {
+  "message": "Utilisateur testuser créé avec succès",
+  "user_id": 3
+}
+
+============================================================
+TEST: Obtention d'un token JWT (bonus)
+============================================================
+✅ POST http://127.0.0.1:8000/api/token/
+   Status: 200 (attendu: 200)
+   Réponse: {
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NDY4MDQxNSwiaWF0IjoxNzY0NTk0MDE1LCJqdGkiOiI1NmMyMTg1YjlhY2Y0NTE5OGMyNGZjYzYyY2U3MTA3MCIsInVzZXJfaWQiOjN9.7goufqH_PphOeW80Yu4Vt7QCf545hdwpjYEAanmNfn8",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTk3NjE1LCJpYXQiOjE3NjQ1OTQwMTUsImp0aSI6ImYzOWUzOTZmYmZjYjQxNzA4MmRlODdiN2IzZjlhYjMzIiwidXNlcl9pZCI6M30.VUl_hjC8wgyZY8PunVY9GFc_--YYSZucSeEqcO0YAGU"
+}
+
+============================================================
+TEST: Rafraîchissement d'un token JWT (bonus)
+============================================================
+✅ POST http://127.0.0.1:8000/api/refresh_token/
+   Status: 200 (attendu: 200)
+   Réponse: {
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NTk3NjE1LCJpYXQiOjE3NjQ1OTQwMTUsImp0aSI6ImM2YzY1NGJlOTUwMTQxOTNiZWY5OGNmNzliMDAzNTJlIiwidXNlcl9pZCI6M30.N4uRm8ir7UjDp8jbtK1007w5U3ygE-wUQw7qw3-7Qq4"
+}
+
+============================================================
+📊 RÉSUMÉ DES TESTS
+============================================================
+✅ PASS - GET /api/concessionnaires/
+✅ PASS - GET /api/concessionnaires/<id>/
+✅ PASS - GET /api/concessionnaires/<id>/vehicules/
+✅ PASS - GET /api/concessionnaires/<id>/vehicules/<id>/
+✅ PASS - POST /api/users/
+✅ PASS - POST /api/token/
+✅ PASS - POST /api/refresh_token/
+
+✅ Tests réussis: 7/7
+🎉 Tous les tests sont passés avec succès !
