@@ -89,18 +89,11 @@ Pour tester l'API, j'ai utilisé Postman mais vous pouvez aussi utiliser Bruno o
 
 ## Dépôt GitHub
 
-Le projet est disponible sur GitHub. Pour le cloner ou le mettre à jour :
+Le projet est disponible sur GitHub : [https://github.com/Mat-eoDev/django-rest](https://github.com/Mat-eoDev/django-rest)
 
-1. Créer un nouveau dépôt sur GitHub (en public)
-2. Ajouter le remote :
+Pour cloner le projet :
 ```bash
-git remote add origin https://github.com/VOTRE_USERNAME/VOTRE_REPO.git
-```
-3. Pousser le code :
-```bash
-git branch -M main
-git push -u origin main
+git clone https://github.com/Mat-eoDev/django-rest.git
 ```
 
-Le lien du dépôt GitHub est à fournir dans le rendu du devoir.
 
