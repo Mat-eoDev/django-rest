@@ -78,3 +78,20 @@ Vous pouvez tester les endpoints avec des outils comme Postman ou Bruno.
 - Django REST Framework 3.14.0
 - djangorestframework-simplejwt 5.3.0
 
+## Dépôt GitHub
+
+Pour créer le dépôt GitHub :
+
+1. Créer un nouveau dépôt sur GitHub (public)
+2. Ajouter le remote :
+```bash
+git remote add origin https://github.com/VOTRE_USERNAME/VOTRE_REPO.git
+```
+3. Pousser le code :
+```bash
+git branch -M main
+git push -u origin main
+```
+
+Le lien du dépôt doit être fourni dans le rendu du devoir.
+
